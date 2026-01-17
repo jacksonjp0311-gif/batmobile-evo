@@ -1,0 +1,41 @@
+# batteries - CUDA Kernels for Equivariant GNNs
+
+## What this is
+High-performance CUDA kernels for equivariant message passing neural networks used in atomistic simulations (molecular dynamics, materials science, drug discovery). Drop-in replacements for e3nn operations with 10-20x speedups.
+
+## Key files
+- include/*.cuh - CUDA kernel headers
+- src/spherical_harmonics/ - Y_lm computation, L_max up to 6
+- src/tensor_product/ - Clebsch-Gordan tensor products with compile-time unrolled coefficients
+- src/neighbor_list/ - Cell-list spatial hashing with periodic boundary conditions
+- src/message_passing/ - Fused SH+TP kernel
+- python/batteries/__init__.py - Public Python API
+- python/batteries/autograd.py - torch.autograd.Function wrappers for backward pass
+- scripts/gen_fused_tp.py - Code generator for CG coefficients
+
+## Architecture
+All kernels are templated on L_max (max angular momentum). CG coefficients are baked in at compile time via code generation. Backward passes are custom CUDA kernels (not autograd).
+
+## Key functions
+- spherical_harmonics(vectors, L_max) -> Y_lm tensor
+- tensor_product(input1, input2, weights) -> output
+- fused_sh_tp_simple(edge_vectors, node_features, source_idx) -> messages
+
+## Performance characteristics
+- Spherical harmonics: memory-bound at large N, 200+ GB/s on RTX 3090
+- Tensor product: compute-bound, ~12 TFLOPS (34% of peak)
+- All kernels target FP32, no FP64 (consumer GPU optimization)
+
+## How to modify
+- To change L_max: edit scripts/gen_fused_tp.py and regenerate headers
+- To add new kernels: follow pattern in src/spherical_harmonics/
+- Python bindings: python/bindings.cpp using pybind11
+
+## Testing
+- Correctness: compared against e3nn reference implementations
+- Benchmarks: benchmarks/*.py scripts
+
+## Dependencies
+- CUDA 11.8+
+- PyTorch 2.0+
+- pybind11

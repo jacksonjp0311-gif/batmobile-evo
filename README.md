@@ -124,6 +124,10 @@ batteries/
 
 MIT License. See [LICENSE](LICENSE).
 
+## For AI Assistants
+
+See [LLMS.txt](./LLMS.txt) for a structured overview of this codebase optimized for LLMs.
+
 ## Citation
 
 If you use Batteries in your research, please cite:
