@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=45", "cmake>=3.18", "pybind11>=2.10", "torch>=2.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "batteries"
+version = "0.1.0"
+description = "Optimized CUDA kernels for equivariant GNNs"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "torch>=2.0",
+    "numpy>=1.20",
+]
+
+[project.optional-dependencies]
+dev = [
+    "e3nn>=0.5.0",
+    "pytest>=7.0",
+]
+
+[tool.uv.extra-build-dependencies]
+torch-scatter = ["torch"]
+torch-cluster = ["torch"]
+
+[tool.setuptools.packages.find]
+where = ["python"]
+include = ["batteries*"]

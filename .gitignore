@@ -1,0 +1,67 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+*.whl
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# CUDA build artifacts
+*.o
+*.cubin
+*.ptx
+*.fatbin
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Profiling
+*.ncu-rep
+*.nsys-rep
+*.qdrep
+ncu_reports/
+
+# Misc
+*.log
+*.bak
+
+# Build scripts and lock files
+build.sh
+uv.lock
+CMakeLists.txt
+
+# Profiling data
+profiling/
+
+# Compiled binaries
+test_neighbor_list
