@@ -1,5 +1,5 @@
 """
-Autograd-compatible wrappers for batteries CUDA kernels.
+Autograd-compatible wrappers for batmobile CUDA kernels.
 
 These wrap the fast CUDA forward passes with analytical backward implementations
 to enable gradient-based computations (e.g., force = -dE/dR).
@@ -11,8 +11,8 @@ from typing import Optional, Tuple
 import math
 
 # Import the CUDA kernels
-# _batteries is in the project root, not inside the python package
-import _batteries
+# _batmobile is in the project root, not inside the python package
+import _batmobile
 
 
 class SphericalHarmonicsFunction(torch.autograd.Function):
@@ -55,7 +55,7 @@ class SphericalHarmonicsFunction(torch.autograd.Function):
             input_vectors = edge_vectors
 
         # Use fast CUDA forward
-        out = _batteries.spherical_harmonics(input_vectors, lmax)
+        out = _batmobile.spherical_harmonics(input_vectors, lmax)
         return out
 
     @staticmethod
@@ -78,7 +78,7 @@ class SphericalHarmonicsFunction(torch.autograd.Function):
 
         # Use fast CUDA backward kernel
         grad_output = grad_output.contiguous()
-        grad_input = _batteries.spherical_harmonics_backward(vectors, grad_output)
+        grad_input = _batmobile.spherical_harmonics_backward(vectors, grad_output)
 
         if normalize and norms is not None:
             # Chain rule through normalization: d(v/|v|)/dv = (I - v v^T / |v|^2) / |v|
@@ -527,7 +527,7 @@ class TensorProductSimpleFunction(torch.autograd.Function):
         ctx.save_for_backward(input1, input2)
 
         # Use CUDA forward pass
-        output = _batteries.tensor_product_simple(input1, input2)
+        output = _batmobile.tensor_product_simple(input1, input2)
         return output
 
     @staticmethod
@@ -537,7 +537,7 @@ class TensorProductSimpleFunction(torch.autograd.Function):
 
         # Use fast CUDA backward kernel
         grad_output = grad_output.contiguous()
-        grad_input1, grad_input2 = _batteries.tensor_product_simple_backward(
+        grad_input1, grad_input2 = _batmobile.tensor_product_simple_backward(
             input1, input2, grad_output
         )
 
@@ -576,7 +576,7 @@ class TensorProductFunction(torch.autograd.Function):
         ctx.c_out = c_out
 
         # Use CUDA forward pass (infers c_in/c_out from tensor shapes)
-        output = _batteries.tensor_product(input1, input2, weights)
+        output = _batmobile.tensor_product(input1, input2, weights)
         return output
 
     @staticmethod
@@ -591,7 +591,7 @@ class TensorProductFunction(torch.autograd.Function):
 
         # Use fast CUDA backward kernel
         grad_output = grad_output.contiguous()
-        grad_input1, grad_input2, grad_weights = _batteries.tensor_product_backward(
+        grad_input1, grad_input2, grad_weights = _batmobile.tensor_product_backward(
             input1, input2, weights, grad_output,
             needs_input1_grad, needs_input2_grad, needs_weights_grad
         )

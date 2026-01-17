@@ -1,4 +1,4 @@
-# batteries - CUDA Kernels for Equivariant GNNs
+# batmobile - CUDA Kernels for Equivariant GNNs
 
 ## What this is
 High-performance CUDA kernels for equivariant message passing neural networks used in atomistic simulations (molecular dynamics, materials science, drug discovery). Drop-in replacements for e3nn operations with 10-20x speedups.
@@ -9,8 +9,8 @@ High-performance CUDA kernels for equivariant message passing neural networks us
 - src/tensor_product/ - Clebsch-Gordan tensor products with compile-time unrolled coefficients
 - src/neighbor_list/ - Cell-list spatial hashing with periodic boundary conditions
 - src/message_passing/ - Fused SH+TP kernel
-- python/batteries/__init__.py - Public Python API
-- python/batteries/autograd.py - torch.autograd.Function wrappers for backward pass
+- python/batmobile/__init__.py - Public Python API
+- python/batmobile/autograd.py - torch.autograd.Function wrappers for backward pass
 - scripts/gen_fused_tp.py - Code generator for CG coefficients
 
 ## Architecture

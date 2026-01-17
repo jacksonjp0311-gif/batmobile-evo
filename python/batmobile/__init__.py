@@ -1,5 +1,5 @@
 """
-Batteries: Optimized CUDA kernels for equivariant GNNs
+Batmobile: Optimized CUDA kernels for equivariant GNNs
 
 High-performance kernels for:
 - Spherical harmonics computation (L_max up to 6)

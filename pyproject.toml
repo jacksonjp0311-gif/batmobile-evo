@@ -3,7 +3,7 @@ requires = ["setuptools>=45", "cmake>=3.18", "pybind11>=2.10", "torch>=2.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "batteries"
+name = "batmobile"
 version = "0.1.0"
 description = "Optimized CUDA kernels for equivariant GNNs"
 readme = "README.md"
@@ -25,4 +25,4 @@ torch-cluster = ["torch"]
 
 [tool.setuptools.packages.find]
 where = ["python"]
-include = ["batteries*"]
+include = ["batmobile*"]

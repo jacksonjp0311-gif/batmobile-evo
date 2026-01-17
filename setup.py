@@ -1,5 +1,5 @@
 """
-Setup script for batteries CUDA kernels.
+Setup script for batmobile CUDA kernels.
 Uses torch.utils.cpp_extension for building.
 """
 
@@ -14,12 +14,12 @@ here = os.path.dirname(os.path.abspath(__file__))
 os.environ.setdefault('TORCH_CUDA_ARCH_LIST', '8.6')
 
 setup(
-    name='batteries',
+    name='batmobile',
     version='0.1.0',
     description='Optimized CUDA kernels for equivariant GNNs',
     ext_modules=[
         CUDAExtension(
-            name='_batteries',
+            name='_batmobile',
             sources=[
                 'python/bindings.cpp',
                 'src/spherical_harmonics/spherical_harmonics.cu',
@@ -47,8 +47,8 @@ setup(
     cmdclass={
         'build_ext': BuildExtension,
     },
-    packages=['batteries'],
-    package_dir={'batteries': 'python/batteries'},
+    packages=['batmobile'],
+    package_dir={'batmobile': 'python/batmobile'},
     python_requires='>=3.9',
     install_requires=[
         'torch>=2.0',

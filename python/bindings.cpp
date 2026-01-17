@@ -1,5 +1,5 @@
 /**
- * Python bindings for batteries CUDA kernels
+ * Python bindings for batmobile CUDA kernels
  */
 
 #include <pybind11/pybind11.h>
@@ -64,7 +64,7 @@ torch::Tensor spherical_harmonics(
     cudaStream_t stream = c10::cuda::getCurrentCUDAStream().stream();
 
     // Launch kernel
-    cudaError_t err = batteries::spherical_harmonics_dispatch(
+    cudaError_t err = batmobile::spherical_harmonics_dispatch(
         get_ptr<float>(edge_vectors, "edge_vectors"),
         get_ptr_mut<float>(Y_lm, "Y_lm"),
         N,
@@ -102,7 +102,7 @@ void spherical_harmonics_inplace(
 
     cudaStream_t stream = c10::cuda::getCurrentCUDAStream().stream();
 
-    cudaError_t err = batteries::spherical_harmonics_dispatch(
+    cudaError_t err = batmobile::spherical_harmonics_dispatch(
         get_ptr<float>(edge_vectors, "edge_vectors"),
         get_ptr_mut<float>(Y_lm, "Y_lm"),
         N,
@@ -140,7 +140,7 @@ torch::Tensor tensor_product_simple(
 
     cudaStream_t stream = c10::cuda::getCurrentCUDAStream().stream();
 
-    cudaError_t err = batteries::tensor_product_simple_l3(
+    cudaError_t err = batmobile::tensor_product_simple_l3(
         get_ptr<float>(input1, "input1"),
         get_ptr<float>(input2, "input2"),
         get_ptr_mut<float>(output, "output"),
@@ -181,7 +181,7 @@ torch::Tensor tensor_product(
     const int64_t N = input1.size(0);
     const int C_in = input1.size(1);
     const int C_out = weights.size(2);
-    const int num_paths = batteries::get_num_paths_l3();
+    const int num_paths = batmobile::get_num_paths_l3();
 
     TORCH_CHECK(weights.size(0) == num_paths, "weights must have ", num_paths, " paths");
     TORCH_CHECK(weights.size(1) == C_in, "weights C_in must match input1");
@@ -195,7 +195,7 @@ torch::Tensor tensor_product(
 
     cudaStream_t stream = c10::cuda::getCurrentCUDAStream().stream();
 
-    cudaError_t err = batteries::tensor_product_l3(
+    cudaError_t err = batmobile::tensor_product_l3(
         get_ptr<float>(input1, "input1"),
         get_ptr<float>(input2, "input2"),
         get_ptr<float>(weights, "weights"),
@@ -215,15 +215,15 @@ torch::Tensor tensor_product(
  * Returns [num_paths, 3] array with (l1, l2, l_out) for each path.
  */
 torch::Tensor get_tp_path_info() {
-    const int num_paths = batteries::get_num_paths_l3();
+    const int num_paths = batmobile::get_num_paths_l3();
     auto options = torch::TensorOptions().dtype(torch::kInt32);
     torch::Tensor path_info = torch::empty({num_paths, 3}, options);
-    batteries::get_path_info_l3(path_info.data_ptr<int>());
+    batmobile::get_path_info_l3(path_info.data_ptr<int>());
     return path_info;
 }
 
 int get_tp_num_paths() {
-    return batteries::get_num_paths_l3();
+    return batmobile::get_num_paths_l3();
 }
 
 // ============================================================================
@@ -266,7 +266,7 @@ torch::Tensor spherical_harmonics_backward(
 
     cudaStream_t stream = c10::cuda::getCurrentCUDAStream().stream();
 
-    cudaError_t err = batteries::spherical_harmonics_backward_dispatch(
+    cudaError_t err = batmobile::spherical_harmonics_backward_dispatch(
         get_ptr<float>(edge_vectors, "edge_vectors"),
         get_ptr<float>(grad_Y_lm, "grad_Y_lm"),
         get_ptr_mut<float>(grad_xyz, "grad_xyz"),
@@ -305,7 +305,7 @@ std::tuple<torch::Tensor, torch::Tensor> tensor_product_simple_backward(
 
     cudaStream_t stream = c10::cuda::getCurrentCUDAStream().stream();
 
-    cudaError_t err = batteries::tensor_product_simple_backward_l3(
+    cudaError_t err = batmobile::tensor_product_simple_backward_l3(
         get_ptr<float>(input1, "input1"),
         get_ptr<float>(input2, "input2"),
         get_ptr<float>(grad_output, "grad_output"),
@@ -339,7 +339,7 @@ std::tuple<torch::Tensor, torch::Tensor, torch::Tensor> tensor_product_backward(
     const int64_t N = input1.size(0);
     const int C_in = input1.size(1);
     const int C_out = weights.size(2);
-    const int num_paths = batteries::get_num_paths_l3();
+    const int num_paths = batmobile::get_num_paths_l3();
 
     TORCH_CHECK(weights.size(0) == num_paths, "weights must have ", num_paths, " paths");
 
@@ -368,7 +368,7 @@ std::tuple<torch::Tensor, torch::Tensor, torch::Tensor> tensor_product_backward(
 
     cudaStream_t stream = c10::cuda::getCurrentCUDAStream().stream();
 
-    cudaError_t err = batteries::tensor_product_backward_l3(
+    cudaError_t err = batmobile::tensor_product_backward_l3(
         get_ptr<float>(input1, "input1"),
         get_ptr<float>(input2, "input2"),
         get_ptr<float>(weights, "weights"),
@@ -423,7 +423,7 @@ std::tuple<torch::Tensor, torch::Tensor> edge_index_to_csr(
 
     cudaStream_t stream = c10::cuda::getCurrentCUDAStream().stream();
 
-    cudaError_t err = batteries::edge_index_to_csr(
+    cudaError_t err = batmobile::edge_index_to_csr(
         get_ptr<int64_t>(edge_index, "edge_index"),
         get_ptr_mut<int64_t>(row_ptr, "row_ptr"),
         get_ptr_mut<int64_t>(col_idx, "col_idx"),
@@ -471,7 +471,7 @@ torch::Tensor fused_message_passing_simple_py(
 
     cudaStream_t stream = c10::cuda::getCurrentCUDAStream().stream();
 
-    cudaError_t err = batteries::fused_message_passing_simple(
+    cudaError_t err = batmobile::fused_message_passing_simple(
         get_ptr<float>(node_features, "node_features"),
         get_ptr<float>(edge_vectors, "edge_vectors"),
         get_ptr<int64_t>(edge_index, "edge_index"),
@@ -525,7 +525,7 @@ torch::Tensor fused_message_passing_py(
 
     cudaStream_t stream = c10::cuda::getCurrentCUDAStream().stream();
 
-    cudaError_t err = batteries::fused_message_passing(
+    cudaError_t err = batmobile::fused_message_passing(
         get_ptr<float>(node_features, "node_features"),
         get_ptr<float>(edge_vectors, "edge_vectors"),
         get_ptr<float>(weights, "weights"),
@@ -580,7 +580,7 @@ torch::Tensor fused_sh_tp_simple_py(
 
     cudaStream_t stream = c10::cuda::getCurrentCUDAStream().stream();
 
-    cudaError_t err = batteries::fused_sh_tp_simple(
+    cudaError_t err = batmobile::fused_sh_tp_simple(
         get_ptr<float>(edge_vectors, "edge_vectors"),
         get_ptr<float>(node_features, "node_features"),
         get_ptr<int64_t>(source_idx, "source_idx"),
@@ -594,7 +594,7 @@ torch::Tensor fused_sh_tp_simple_py(
     return messages;
 }
 
-PYBIND11_MODULE(_batteries, m) {
+PYBIND11_MODULE(_batmobile, m) {
     m.doc() = "Batteries: Optimized CUDA kernels for equivariant GNNs";
 
     m.def("spherical_harmonics", &spherical_harmonics,

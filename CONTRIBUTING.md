@@ -1,10 +1,10 @@
-# Contributing to batteries
+# Contributing to batmobile
 
 ## Building from source
 
 ```bash
-git clone https://github.com/Infatoshi/batteries
-cd batteries
+git clone https://github.com/Infatoshi/batmobile
+cd batmobile
 pip install -e .
 ```
 
@@ -39,5 +39,5 @@ python scripts/gen_fused_tp.py > include/tensor_product_fused.cuh
 ## Code style
 
 - CUDA kernels: use `__device__ __forceinline__` for hot paths
-- Python: follow existing patterns in `python/batteries/`
+- Python: follow existing patterns in `python/batmobile/`
 - Keep CG coefficients compile-time constant for performance

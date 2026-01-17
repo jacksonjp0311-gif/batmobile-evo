@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-MACE-style inference example using Batteries kernels.
+MACE-style inference example using Batmobile kernels.
 
 Demonstrates:
 1. Loading a molecular structure with ASE
@@ -24,8 +24,8 @@ except ImportError:
     HAS_ASE = False
     print("ASE not installed. Using synthetic data.")
 
-import batteries
-from batteries.autograd import SphericalHarmonicsFunction
+import batmobile
+from batmobile.autograd import SphericalHarmonicsFunction
 
 
 def create_water_molecule():
@@ -102,7 +102,7 @@ def create_synthetic_graph(n_atoms=100, n_edges_per_atom=20):
 
 class SimpleMACELayer(torch.nn.Module):
     """
-    Simplified MACE-style message passing layer using Batteries kernels.
+    Simplified MACE-style message passing layer using Batmobile kernels.
 
     Real MACE has additional components:
     - Radial basis functions
@@ -121,7 +121,7 @@ class SimpleMACELayer(torch.nn.Module):
         self.num_irreps = (lmax + 1) ** 2  # 16 for lmax=3
 
         # Number of CG tensor product paths
-        self.num_paths = batteries.get_tp_num_paths()  # 34 for lmax=3
+        self.num_paths = batmobile.get_tp_num_paths()  # 34 for lmax=3
 
         # Learnable weights for tensor product
         self.tp_weights = torch.nn.Parameter(
@@ -157,7 +157,7 @@ class SimpleMACELayer(torch.nn.Module):
         src_features = node_features[sources]  # [N_edges, C_in, 16]
 
         # 3. Compute tensor product with learnable weights
-        messages = batteries.tensor_product(src_features, Y_lm, self.tp_weights)
+        messages = batmobile.tensor_product(src_features, Y_lm, self.tp_weights)
         # messages: [N_edges, C_out, 16]
 
         # 4. Scatter add messages to target nodes
@@ -205,7 +205,7 @@ class SimpleMACELayerFused(torch.nn.Module):
         targets = edge_index[1]
 
         # 1. Fused SH + TP (no weights)
-        messages = batteries.fused_sh_tp_simple(edge_vectors, node_features, sources)
+        messages = batmobile.fused_sh_tp_simple(edge_vectors, node_features, sources)
         # messages: [N_edges, C, 16]
 
         # 2. Scatter add messages to target nodes
