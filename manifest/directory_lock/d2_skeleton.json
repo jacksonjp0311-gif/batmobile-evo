@@ -1,0 +1,28 @@
+﻿{
+  "contract": "batmobile.evo.directory_lock",
+  "version": "A2.0.V1.2",
+  "notes": "Repo-isomorphic directory skeleton (D2.0). Scaffold-only. No claims.",
+  "dirs": [
+    "include",
+    "src",
+    "src/spherical_harmonics",
+    "src/tensor_product",
+    "src/neighbor_list",
+    "src/message_passing",
+    "python",
+    "python/batmobile",
+    "python/cg_coefficients",
+    "benchmarks",
+    "scripts",
+    "tests",
+    "docs",
+    "docs/architecture",
+    "docs/hypothesis",
+    "manifest",
+    "manifest/canon",
+    "manifest/architecture",
+    "manifest/theory",
+    "manifest/directory_lock",
+    "manifest/overlay_raw"
+  ]
+}
