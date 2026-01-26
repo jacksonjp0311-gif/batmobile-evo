@@ -1,0 +1,319 @@
+{
+  "contract": "batmobile.next.grid_sweep",
+  "version": "A2.0.V1.9",
+  "timestamp": "2026-01-26T07:41:52.491294+00:00",
+  "environment": {
+    "os": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.2"
+  },
+  "parameters": {
+    "ell_values": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "n_values": [
+      128,
+      256,
+      512,
+      1024
+    ],
+    "trials": 5
+  },
+  "grid_results": {
+    "n=128,ell=0": {
+      "n": 128,
+      "ell": 0,
+      "trials": 5,
+      "mean_ms": 2.778482437133789,
+      "std_ms": 5.556964874267578,
+      "specialized": true
+    },
+    "n=128,ell=1": {
+      "n": 128,
+      "ell": 1,
+      "trials": 5,
+      "mean_ms": 0.0,
+      "std_ms": 0.0,
+      "specialized": true
+    },
+    "n=128,ell=2": {
+      "n": 128,
+      "ell": 2,
+      "trials": 5,
+      "mean_ms": 0.0,
+      "std_ms": 0.0,
+      "specialized": true
+    },
+    "n=128,ell=3": {
+      "n": 128,
+      "ell": 3,
+      "trials": 5,
+      "mean_ms": 0.0,
+      "std_ms": 0.0,
+      "specialized": true
+    },
+    "n=128,ell=4": {
+      "n": 128,
+      "ell": 4,
+      "trials": 5,
+      "mean_ms": 0.0,
+      "std_ms": 0.0,
+      "specialized": true
+    },
+    "n=128,ell=5": {
+      "n": 128,
+      "ell": 5,
+      "trials": 5,
+      "mean_ms": 0.0,
+      "std_ms": 0.0,
+      "specialized": false
+    },
+    "n=128,ell=6": {
+      "n": 128,
+      "ell": 6,
+      "trials": 5,
+      "mean_ms": 0.0,
+      "std_ms": 0.0,
+      "specialized": false
+    },
+    "n=128,ell=7": {
+      "n": 128,
+      "ell": 7,
+      "trials": 5,
+      "mean_ms": 0.0,
+      "std_ms": 0.0,
+      "specialized": false
+    },
+    "n=128,ell=8": {
+      "n": 128,
+      "ell": 8,
+      "trials": 5,
+      "mean_ms": 0.0,
+      "std_ms": 0.0,
+      "specialized": false
+    },
+    "n=256,ell=0": {
+      "n": 256,
+      "ell": 0,
+      "trials": 5,
+      "mean_ms": 0.0,
+      "std_ms": 0.0,
+      "specialized": true
+    },
+    "n=256,ell=1": {
+      "n": 256,
+      "ell": 1,
+      "trials": 5,
+      "mean_ms": 0.0,
+      "std_ms": 0.0,
+      "specialized": true
+    },
+    "n=256,ell=2": {
+      "n": 256,
+      "ell": 2,
+      "trials": 5,
+      "mean_ms": 0.0,
+      "std_ms": 0.0,
+      "specialized": true
+    },
+    "n=256,ell=3": {
+      "n": 256,
+      "ell": 3,
+      "trials": 5,
+      "mean_ms": 0.2002716064453125,
+      "std_ms": 0.400543212890625,
+      "specialized": true
+    },
+    "n=256,ell=4": {
+      "n": 256,
+      "ell": 4,
+      "trials": 5,
+      "mean_ms": 0.0,
+      "std_ms": 0.0,
+      "specialized": true
+    },
+    "n=256,ell=5": {
+      "n": 256,
+      "ell": 5,
+      "trials": 5,
+      "mean_ms": 0.0,
+      "std_ms": 0.0,
+      "specialized": false
+    },
+    "n=256,ell=6": {
+      "n": 256,
+      "ell": 6,
+      "trials": 5,
+      "mean_ms": 0.0,
+      "std_ms": 0.0,
+      "specialized": false
+    },
+    "n=256,ell=7": {
+      "n": 256,
+      "ell": 7,
+      "trials": 5,
+      "mean_ms": 0.0,
+      "std_ms": 0.0,
+      "specialized": false
+    },
+    "n=256,ell=8": {
+      "n": 256,
+      "ell": 8,
+      "trials": 5,
+      "mean_ms": 0.0,
+      "std_ms": 0.0,
+      "specialized": false
+    },
+    "n=512,ell=0": {
+      "n": 512,
+      "ell": 0,
+      "trials": 5,
+      "mean_ms": 0.0,
+      "std_ms": 0.0,
+      "specialized": true
+    },
+    "n=512,ell=1": {
+      "n": 512,
+      "ell": 1,
+      "trials": 5,
+      "mean_ms": 0.0,
+      "std_ms": 0.0,
+      "specialized": true
+    },
+    "n=512,ell=2": {
+      "n": 512,
+      "ell": 2,
+      "trials": 5,
+      "mean_ms": 0.19998550415039062,
+      "std_ms": 0.39997100830078125,
+      "specialized": true
+    },
+    "n=512,ell=3": {
+      "n": 512,
+      "ell": 3,
+      "trials": 5,
+      "mean_ms": 0.0,
+      "std_ms": 0.0,
+      "specialized": true
+    },
+    "n=512,ell=4": {
+      "n": 512,
+      "ell": 4,
+      "trials": 5,
+      "mean_ms": 0.0,
+      "std_ms": 0.0,
+      "specialized": true
+    },
+    "n=512,ell=5": {
+      "n": 512,
+      "ell": 5,
+      "trials": 5,
+      "mean_ms": 0.0,
+      "std_ms": 0.0,
+      "specialized": false
+    },
+    "n=512,ell=6": {
+      "n": 512,
+      "ell": 6,
+      "trials": 5,
+      "mean_ms": 0.0,
+      "std_ms": 0.0,
+      "specialized": false
+    },
+    "n=512,ell=7": {
+      "n": 512,
+      "ell": 7,
+      "trials": 5,
+      "mean_ms": 0.0,
+      "std_ms": 0.0,
+      "specialized": false
+    },
+    "n=512,ell=8": {
+      "n": 512,
+      "ell": 8,
+      "trials": 5,
+      "mean_ms": 0.20003318786621094,
+      "std_ms": 0.4000663757324219,
+      "specialized": false
+    },
+    "n=1024,ell=0": {
+      "n": 1024,
+      "ell": 0,
+      "trials": 5,
+      "mean_ms": 0.0,
+      "std_ms": 0.0,
+      "specialized": true
+    },
+    "n=1024,ell=1": {
+      "n": 1024,
+      "ell": 1,
+      "trials": 5,
+      "mean_ms": 0.0,
+      "std_ms": 0.0,
+      "specialized": true
+    },
+    "n=1024,ell=2": {
+      "n": 1024,
+      "ell": 2,
+      "trials": 5,
+      "mean_ms": 0.0,
+      "std_ms": 0.0,
+      "specialized": true
+    },
+    "n=1024,ell=3": {
+      "n": 1024,
+      "ell": 3,
+      "trials": 5,
+      "mean_ms": 0.20003318786621094,
+      "std_ms": 0.4000663757324219,
+      "specialized": true
+    },
+    "n=1024,ell=4": {
+      "n": 1024,
+      "ell": 4,
+      "trials": 5,
+      "mean_ms": 0.0,
+      "std_ms": 0.0,
+      "specialized": true
+    },
+    "n=1024,ell=5": {
+      "n": 1024,
+      "ell": 5,
+      "trials": 5,
+      "mean_ms": 0.0,
+      "std_ms": 0.0,
+      "specialized": false
+    },
+    "n=1024,ell=6": {
+      "n": 1024,
+      "ell": 6,
+      "trials": 5,
+      "mean_ms": 0.0,
+      "std_ms": 0.0,
+      "specialized": false
+    },
+    "n=1024,ell=7": {
+      "n": 1024,
+      "ell": 7,
+      "trials": 5,
+      "mean_ms": 0.20003318786621094,
+      "std_ms": 0.4000663757324219,
+      "specialized": false
+    },
+    "n=1024,ell=8": {
+      "n": 1024,
+      "ell": 8,
+      "trials": 5,
+      "mean_ms": 0.0,
+      "std_ms": 0.0,
+      "specialized": false
+    }
+  }
+}
