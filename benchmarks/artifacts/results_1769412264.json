@@ -1,0 +1,15 @@
+{
+  "contract": "batmobile.next.benchmarks",
+  "version": "A2.0.V1.6.3",
+  "timestamp": "2026-01-26T07:24:24.586979Z",
+  "environment": {
+    "os": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.2"
+  },
+  "metrics": {
+    "ell": 2,
+    "specialized": true,
+    "dot": 9.081086807141986,
+    "ms": 0.0
+  }
+}
