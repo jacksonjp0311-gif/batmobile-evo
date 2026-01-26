@@ -1,0 +1,65 @@
+{
+  "contract": "batmobile.next.sweep",
+  "version": "A2.0.V1.8.4",
+  "timestamp": "2026-01-26T07:40:05.486487+00:00",
+  "environment": {
+    "os": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.2"
+  },
+  "sweep": [
+    {
+      "ell": 0,
+      "specialized": true,
+      "dot": -0.2856599144902088,
+      "ms": 18.741369247436523
+    },
+    {
+      "ell": 1,
+      "specialized": true,
+      "dot": -20.80737956803362,
+      "ms": 0.0
+    },
+    {
+      "ell": 2,
+      "specialized": true,
+      "dot": 1.415291965375987,
+      "ms": 0.0
+    },
+    {
+      "ell": 3,
+      "specialized": true,
+      "dot": -5.677748901257691,
+      "ms": 0.0
+    },
+    {
+      "ell": 4,
+      "specialized": true,
+      "dot": -4.705446577802256,
+      "ms": 0.0
+    },
+    {
+      "ell": 5,
+      "specialized": false,
+      "dot": 2.41548364868172,
+      "ms": 0.0
+    },
+    {
+      "ell": 6,
+      "specialized": false,
+      "dot": 23.592640555435125,
+      "ms": 0.0
+    },
+    {
+      "ell": 7,
+      "specialized": false,
+      "dot": 3.0832316025707183,
+      "ms": 0.0
+    },
+    {
+      "ell": 8,
+      "specialized": false,
+      "dot": -6.366970833904668,
+      "ms": 0.0
+    }
+  ]
+}
