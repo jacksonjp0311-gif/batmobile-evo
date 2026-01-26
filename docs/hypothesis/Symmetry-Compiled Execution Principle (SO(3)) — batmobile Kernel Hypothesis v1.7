@@ -1,0 +1,292 @@
+% ─────────────────────────────────────────────────────────────────────────────
+%  BATMOBILE — SYMMETRY-COMPILED EXECUTION PRINCIPLE
+%  Version: v1.7 (Publication-Grade Hypothesis Note, arXiv/MLSys-Ready)
+%
+%  Author: James Paul Jackson
+%  Date: January 2026
+%
+%  STATUS
+%  ------
+%  HYPOTHESIS DOCUMENT — PENDING EMPIRICAL VALIDATION.
+%  This technical note is production-scoped, benchmark-specified, and falsifiable.
+%  All performance scaling claims remain explicitly unvalidated until tables in
+%  Section 7 are filled with real measurements.
+%
+%  EXTRACTION
+%  ----------
+%  This document extracts a single execution-level optimization hypothesis from
+%  analysis of the batmobile CUDA kernel library for SO(3)-equivariant tensor
+%  products. The extraction is strictly observational: no new architectures,
+%  algorithms, or theoretical claims beyond what is implied by the artifact.
+%
+%  ★ Extraction methodology (Codex–Tesseract, operationally equivalent to
+%    standard systematic performance engineering):
+%      (1) Select a high-signal computational artifact
+%      (2) Identify fixed mathematical constraints (here: SO(3) symmetry)
+%      (3) Remove implementation-contingent abstractions
+%      (4) Isolate the irreducible execution-critical path
+%      (5) Locate the workload boundary where regime behavior changes
+%      (6) Formalize the surviving invariant as a scoped execution principle
+%
+%  ★ Extraction lifecycle (applied here):
+%    Artifact → SO(3) constraint → abstraction removal → kernel specialization →
+%    activation boundary → principle lock.
+%
+%  INSPIRATION
+%  -----------
+%  Infatoshi, "batmobile" (SO(3) CUDA kernel specialization)
+%  https://github.com/Infatoshi/batmobile
+%
+%  PURPOSE
+%  -------
+%  To formalize a production-scoped execution hypothesis for fixed SO(3)
+%  equivariant tensor products: compiling Clebsch–Gordan coupling structure into
+%  specialized CUDA kernels reduces abstraction overhead and is predicted to
+%  yield increasing relative throughput advantage with representation order,
+%  within empirically supported workload regimes.
+%
+% ─────────────────────────────────────────────────────────────────────────────
+
+\documentclass[12pt]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{geometry}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\geometry{margin=1in}
+
+\title{\textbf{The Symmetry-Compiled Execution Principle (SO(3)-Scoped)}}
+\author{\textbf{James Paul Jackson}}
+\date{January 2026}
+
+\begin{document}
+\maketitle
+
+%──────────────────────────────────────────────────────────────────────────────
+\begin{abstract}
+We formalize a systems-level optimization hypothesis governing performance in
+SO(3)-equivariant neural computation. When Clebsch--Gordan coupling structure is
+lifted from runtime abstraction layers into statically specialized CUDA kernels,
+the relative throughput advantage over abstraction-based baselines is predicted
+to increase with representation order within supported workload regimes (e.g.,
+batmobile at $L_{\max}=3$). This document is a falsifiable benchmark-ready
+technical hypothesis: mechanism, activation boundary, tradeoffs, baseline
+fairness criteria, and validation protocol are explicitly specified.
+\end{abstract}
+
+%──────────────────────────────────────────────────────────────────────────────
+\section{Statement of the Principle}
+
+\textbf{Symmetry-Compiled Execution Principle (SO(3)).}
+
+\emph{For computational systems constrained by fixed, compile-time-known SO(3)
+symmetry, compiling Clebsch--Gordan coupling structure directly into kernel-level
+execution reduces runtime abstraction overhead and is predicted to yield an
+increasing relative performance advantage over dynamic-dispatch baselines as
+representation order grows, within supported workload regimes.}
+
+This is a scoped engineering hypothesis, not a universal law.
+
+%──────────────────────────────────────────────────────────────────────────────
+\section{Mechanistic Basis}
+
+Abstraction-based tensor products typically evaluate:
+\[
+R_{\ell_1} \otimes R_{\ell_2}
+\;\xrightarrow{\text{runtime dispatch}}\;
+\sum_{\ell} R_{\ell}.
+\]
+
+In symmetry-compiled execution, valid coupling paths are generated and fused at
+compile time:
+\[
+\texttt{kernel}(R_{\ell_1}, R_{\ell_2}) \Rightarrow R_{\ell},
+\]
+reducing branching, coefficient lookup, intermediate tensor materialization, and
+kernel launch multiplicity.
+
+The hypothesis is that beyond a workload-dependent boundary, the GPU becomes
+arithmetic-dominated rather than dispatch-dominated, making specialization
+increasingly favorable.
+
+%──────────────────────────────────────────────────────────────────────────────
+\section{Scaling Constraint: SO(3) Coupling Growth}
+
+The number of valid SO(3) Clebsch--Gordan coupling paths grows as:
+\[
+\#\text{paths} = O(\ell^3),
+\]
+subject to triangle-inequality clipping at small $\ell$.
+
+Dynamic abstraction overhead compounds with this combinatorial growth, while
+compiled kernels amortize it into fused arithmetic intensity.
+
+%──────────────────────────────────────────────────────────────────────────────
+\section{Boundary Activation (Empirically Measurable)}
+
+The principle activates only beyond workload thresholds where abstraction
+overhead dominates arithmetic cost. Typical indicators include:
+\begin{itemize}
+  \item coupling paths exceeding $\sim 30$--$100$ (often $\ell \geq 3$),
+  \item workloads exceeding $\sim 10^3$--$10^4$ atom-neighbor interactions,
+  \item compute-bound tensor products rather than memory-bound kernels.
+\end{itemize}
+
+Below this boundary, abstraction frameworks may remain preferable.
+
+%──────────────────────────────────────────────────────────────────────────────
+\section{Compilation and Deployment Tradeoffs}
+
+Static specialization introduces nontrivial systems costs:
+\begin{itemize}
+  \item binary/code-size growth $\sim O(\ell^3)$,
+  \item compilation time overhead (potentially minutes at high $\ell$),
+  \item instruction-cache pressure,
+  \item register pressure reducing GPU occupancy.
+\end{itemize}
+
+Thus specialization is most appropriate in stable production regimes.
+
+%──────────────────────────────────────────────────────────────────────────────
+\section{When NOT to Use This Principle (Quantified Guidance)}
+
+Abstraction-based execution is preferable when:
+\begin{itemize}
+  \item workloads are small (e.g., $<10^2$ atoms or $\ell \leq 2$),
+  \item symmetry structure changes frequently (research/prototyping regimes),
+  \item deployment is binary-size constrained (e.g., $<5$--$10$ MB kernel budget),
+  \item compilation overhead dominates iteration cycles.
+\end{itemize}
+
+%──────────────────────────────────────────────────────────────────────────────
+\section{Empirical Validation Requirements}
+
+Any performance claim must specify:
+\begin{itemize}
+  \item GPU model + CUDA version,
+  \item precision (FP32/TF32/FP16),
+  \item workload size (atoms, neighbors, batch),
+  \item baseline library version + optimization flags.
+\end{itemize}
+
+\subsection{Baseline Fairness Criteria}
+
+Baseline comparisons must clarify whether the reference implementation is:
+\begin{itemize}
+  \item default eager-mode abstraction (fair practitioner default),
+  \item torch.compile optimized abstraction,
+  \item hand-tuned CUDA baseline (strongest comparison).
+\end{itemize}
+
+Speedup claims are baseline-dependent.
+
+%──────────────────────────────────────────────────────────────────────────────
+\section{Benchmark Templates (Pending Measurement)}
+
+\subsection{Throughput Benchmark}
+
+\begin{center}
+\begin{tabular}{cccccc}
+\toprule
+$\ell_{\max}$ & Paths & batmobile (GFLOPS) & baseline (GFLOPS) & Speedup & Binary (KB) \\
+\midrule
+1 & 5   & -- & -- & -- & -- \\
+2 & 15  & -- & -- & -- & -- \\
+3 & 34  & -- & -- & -- & -- \\
+4 & 65  & -- & -- & -- & -- \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Compilation Cost}
+
+\begin{center}
+\begin{tabular}{ccc}
+\toprule
+$\ell_{\max}$ & Compile Time (s) & Kernel Binary Size (KB) \\
+\midrule
+1 & -- & -- \\
+2 & -- & -- \\
+3 & -- & -- \\
+4 & -- & -- \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+%──────────────────────────────────────────────────────────────────────────────
+\section{Predicted Trend (Falsifiable Expectation)}
+
+\begin{center}
+\begin{tabular}{cccc}
+\toprule
+$\ell_{\max}$ & Paths & Predicted Speedup Range & Status \\
+\midrule
+1 & 5   & $\sim 1.0$--$1.2\times$ & unmeasured \\
+2 & 15  & $\sim 1.2$--$1.5\times$ & unmeasured \\
+3 & 34  & $\sim 1.5$--$2.0\times$ & unmeasured \\
+4 & 65  & $\sim 2.0$--$3.0\times$ & unmeasured \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+%──────────────────────────────────────────────────────────────────────────────
+\section{Memory and Cache Profiling Hook}
+
+Scaling beyond moderate $\ell$ may be limited by:
+\begin{itemize}
+  \item register spilling,
+  \item occupancy collapse,
+  \item L1/L2 cache miss amplification,
+  \item memory bandwidth saturation.
+\end{itemize}
+
+Nsight Compute profiling is required to identify the true limiting regime.
+
+%──────────────────────────────────────────────────────────────────────────────
+\section{Validation Criteria (Success vs. Falsification)}
+
+The hypothesis is supported if:
+\begin{itemize}
+  \item speedup $>1.0\times$ for all $\ell \geq 3$,
+  \item speedup increases monotonically with $\ell$,
+  \item activation boundary occurs near predicted workload thresholds.
+\end{itemize}
+
+The hypothesis is falsified if:
+\begin{itemize}
+  \item speedup $<1.0\times$ at any tested $\ell$,
+  \item speedup decreases with increasing $\ell$,
+  \item cache/occupancy collapse prevents scaling beyond $\ell=3$.
+\end{itemize}
+
+%──────────────────────────────────────────────────────────────────────────────
+\section{Related Work (Brief)}
+
+Equivariant tensor product computation is widely studied in libraries such as
+e3nn and escnn. Kernel fusion and specialization are established techniques in
+GPU systems optimization. This note isolates the hypothesis that fixed-group
+SO(3) coupling constraints admit particularly strong compile-time specialization
+benefits in production regimes.
+
+%──────────────────────────────────────────────────────────────────────────────
+\section*{Acknowledgments}
+
+We thank the batmobile authors (Infatoshi) for the inspiring implementation.
+This document presents an extracted hypothesis; empirical validation is ongoing.
+
+%──────────────────────────────────────────────────────────────────────────────
+\section*{Call for Community Validation}
+
+We invite the community to validate this hypothesis using the benchmark protocol
+in Section 7. Reproduction scripts and measurement submissions may be shared via
+pull request at the associated benchmark repository.
+
+%──────────────────────────────────────────────────────────────────────────────
+\section{Conclusion}
+
+This document presents a systems-grade, falsifiable optimization hypothesis:
+within supported SO(3)-equivariant regimes, compiling invariant Clebsch--Gordan
+structure into specialized CUDA kernels is predicted to yield increasing relative
+throughput advantage beyond abstraction-based execution, at the cost of code-size
+and compilation overhead. The next step is empirical completion of Section 7.
+
+\end{document}

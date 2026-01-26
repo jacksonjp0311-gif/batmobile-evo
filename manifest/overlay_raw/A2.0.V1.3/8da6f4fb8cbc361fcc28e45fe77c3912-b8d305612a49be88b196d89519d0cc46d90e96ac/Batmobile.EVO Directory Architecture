@@ -1,0 +1,333 @@
+% ────────────────────────────────────────────────────────────────────────────────
+% ████████████████████████████████████████████████████████████████████████████████
+%
+%   B A T M O B I L E . E V O  D2.0 — DIRECTORY ARCHITECTURE
+%   ────────────────────────────────────────────────────────────────────────────
+%   THEORY → ARCHITECTURE → DIRECTORY BRIDGE
+%   FOR THE SYMMETRY-COMPILED EXECUTION PRINCIPLE (SO(3))
+%
+%   VERSION
+%   ───────
+%   D2.0 v1.0 — Directory Locked · Repo-Isomorphic · CUDA-Scoped · Drop-In
+%
+%   AUTHOR
+%   ──────
+%   James Paul Jackson
+%
+%   DATE
+%   ────
+%   January 2026
+%
+%   CONNECTIVE CANON
+%   ────────────────
+%   • Batmobile (Infatoshi) — SO(3) kernel specialization engine
+%   • Symmetry-Compiled Execution Principle v1.7 (Codex–Tesseract Extraction)
+%   • Batmobile.Next A2.0.V1.0 — Architecture Evolution Scaffold
+%
+%   ROLE
+%   ────
+%   A directory-level instantiation of Batmobile as a closed symmetry execution
+%   system: spherical harmonics → tensor products → neighbor graphs → message passing.
+%
+%   The repository itself is the executable symmetry surface.
+%
+%   Removing directories violates the compiled invariance structure.
+%
+% ████████████████████████████████████████████████████████████████████████████████
+% ────────────────────────────────────────────────────────────────────────────────
+
+\documentclass[12pt]{article}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{longtable}
+\usepackage{amsmath}
+\geometry{margin=1in}
+
+\title{\textbf{Batmobile.evo Directory Architecture (D2.0)}\\
+\large Canonical Filesystem Bridge for Symmetry-Compiled Execution}
+\author{\textbf{James Paul Jackson}}
+\date{January 2026}
+
+\begin{document}
+\maketitle
+
+%────────────────────────────────────────────────────────────
+\section{Purpose of the Directory Bridge}
+
+This document defines the Batmobile repository structure itself as an
+SO(3)-equivariant execution object.
+
+The directory is not a container.
+It is not an implementation detail.
+It is a structural enforcement surface.
+
+Every folder exists because it is required by:
+
+\[
+\text{SO(3) symmetry coupling} \rightarrow
+\text{compiled kernel execution} \rightarrow
+\text{graph-level message passing}
+\]
+
+Removing, bypassing, or collapsing directories breaks invariance.
+
+%────────────────────────────────────────────────────────────
+\section{Top-Level Canonical Directory (Batmobile.evo)}
+
+\begin{verbatim}
+batmobile_evo/
+├── include/
+├── src/
+├── python/
+├── benchmarks/
+├── scripts/
+├── tests/
+└── manifest/
+\end{verbatim}
+
+This root is a closed symmetry execution system.
+No additional top-level domains are permitted.
+
+%────────────────────────────────────────────────────────────
+\section{include/ — Public Symmetry Interface Boundary}
+
+\begin{verbatim}
+include/
+├── batmobile.h
+├── tensor_product.h
+└── kernels.h
+\end{verbatim}
+
+\textbf{Role:}
+Defines the stable ABI surface for all SO(3) kernel families.
+
+\textbf{Must Not Contain:}
+runtime dispatch logic or benchmark code.
+
+\textbf{Hooks:}
+Consumed by \texttt{src/} and exposed to Python bindings.
+
+%────────────────────────────────────────────────────────────
+\section{src/ — Symmetry Kernel Execution Core}
+
+\begin{verbatim}
+src/
+├── spherical_harmonics/
+├── tensor_product/
+├── neighbor_list/
+└── message_passing/
+\end{verbatim}
+
+This is the executable heart of Batmobile.
+
+Each subdirectory corresponds to a mathematically distinct operator layer.
+
+%────────────────────────────────────────────────────────────
+\subsection{spherical\_harmonics/ — Basis Construction Layer}
+
+\begin{verbatim}
+src/spherical_harmonics/
+├── sh_kernel.cu
+├── sh_tables.cuh
+└── README.md
+\end{verbatim}
+
+\textbf{Role:}
+Constructs the SO(3) basis embedding.
+
+\textbf{Invariant:}
+Basis evaluation must remain equivariant under rotation.
+
+%────────────────────────────────────────────────────────────
+\subsection{tensor\_product/ — Clebsch–Gordan Coupling Layer}
+
+\begin{verbatim}
+src/tensor_product/
+├── cg_kernel.cu
+├── schedules/
+└── README.md
+\end{verbatim}
+
+\textbf{Role:}
+Executes static CG coupling channels:
+
+\[
+(\ell_1,\ell_2)\rightarrow\ell_3
+\]
+
+\textbf{Evolution Constraint (Batmobile 2.0):}
+Selective high-$\ell$ compilation must occur here,
+bounded by binary size and register pressure.
+
+%────────────────────────────────────────────────────────────
+\subsection{neighbor\_list/ — Graph Boundary Layer}
+
+\begin{verbatim}
+src/neighbor_list/
+├── cutoff_graph.cu
+├── locality.cuh
+└── README.md
+\end{verbatim}
+
+\textbf{Role:}
+Defines the activation boundary of message passing.
+
+Batmobile performance is not $\ell$-only.
+It is:
+
+\[
+(\ell, N_{\text{atoms}}, d_{\text{neighbors}})
+\]
+
+Neighbor lists define the true scaling regime.
+
+%────────────────────────────────────────────────────────────
+\subsection{message\_passing/ — End-to-End Target Layer}
+
+\begin{verbatim}
+src/message_passing/
+├── mp_kernel.cu
+├── aggregation.cuh
+└── README.md
+\end{verbatim}
+
+\textbf{Role:}
+Implements equivariant graph message passing as the real throughput target.
+
+Tensor products exist to serve message passing workloads,
+not as isolated kernels.
+
+%────────────────────────────────────────────────────────────
+\section{python/ — Binding + Coefficient Artifact Surface}
+
+\begin{verbatim}
+python/
+├── batmobile/
+└── cg_coefficients/
+\end{verbatim}
+
+\textbf{Role:}
+Bridges CUDA symmetry kernels into PyTorch execution.
+
+\subsection{cg\_coefficients/ — Frozen Symmetry Artifacts}
+
+\begin{verbatim}
+python/cg_coefficients/
+├── coeffs_L4.npy
+├── coeffs_L8.npy
+└── version.yaml
+\end{verbatim}
+
+CG tables are compile-time invariants.
+They must be versioned, frozen, and reproducible.
+
+%────────────────────────────────────────────────────────────
+\section{benchmarks/ — Validation Contract Surface}
+
+\begin{verbatim}
+benchmarks/
+├── microbench/
+├── end2end/
+└── results_schema.json
+\end{verbatim}
+
+\textbf{Role:}
+No speedup claims exist without benchmark artifacts.
+
+Every run must emit:
+
+\begin{itemize}
+\item GPU + CUDA metadata
+\item workload regime $(\ell, N, d)$
+\item throughput + variance
+\item commit hash reproducibility
+\end{itemize}
+
+%────────────────────────────────────────────────────────────
+\section{scripts/ — Execution + Profiling Enforcement}
+
+\begin{verbatim}
+scripts/
+├── build.sh
+├── run_bench.sh
+└── profile_ncu.sh
+\end{verbatim}
+
+\textbf{Role:}
+Defines the only allowed execution pathways.
+
+Nsight profiling is mandatory for scaling interpretation.
+
+%────────────────────────────────────────────────────────────
+\section{tests/ — Equivariance Preservation Boundary}
+
+\begin{verbatim}
+tests/
+├── test_rotation_equivariance.py
+├── test_tensor_product_correctness.py
+└── test_message_passing.py
+\end{verbatim}
+
+Correctness precedes optimization.
+No kernel evolution is valid without invariance tests passing.
+
+%────────────────────────────────────────────────────────────
+\section{manifest/ — Directory Lock + Canonical Integrity}
+
+\begin{verbatim}
+manifest/
+├── version.yaml
+├── architecture.ref
+└── theory.ref
+\end{verbatim}
+
+Locks Batmobile.evo to:
+
+\[
+\text{Theory v1.7}
+\rightarrow
+\text{Architecture A2.0}
+\rightarrow
+\text{Directory D2.0}
+\]
+
+Breaking the directory breaks the compiled symmetry system.
+
+%────────────────────────────────────────────────────────────
+\section{Connective Closure}
+
+Batmobile is now formally closed under:
+
+\[
+\text{SO(3) Basis}
+\rightarrow
+\text{CG Coupling}
+\rightarrow
+\text{Neighbor Graph}
+\rightarrow
+\text{Message Passing}
+\rightarrow
+\text{Benchmark Truth}
+\]
+
+The directory is the executable symmetry surface.
+
+%────────────────────────────────────────────────────────────
+\section{Conclusion}
+
+Batmobile.evo D2.0 completes the filesystem-level instantiation of
+symmetry-compiled execution.
+
+The repository is now:
+
+\begin{itemize}
+\item Theory-isomorphic
+\item Kernel-domain closed
+\item Graph-realistic
+\item Benchmark-enforced
+\item Upstream PR-ready
+\end{itemize}
+
+\textbf{Batmobile persists because structure enforces symmetry.}
+
+\end{document}

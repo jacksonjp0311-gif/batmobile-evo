@@ -1,0 +1,303 @@
+% ────────────────────────────────────────────────────────────────────────────────
+% ████████████████████████████████████████████████████████████████████████████████
+%
+%   B A T M O B I L E . E V O   —  A R C H I T E C T U R E
+%   ────────────────────────────────────────────────────────────────────────────
+%   THEORY → SOFTWARE ARCHITECTURE EVOLUTION BRIDGE FOR
+%   THE SYMMETRY-COMPILED EXECUTION PRINCIPLE (SO(3))
+%
+%   VERSION
+%   ───────
+%   A2.0.V1.0 — Architecture v2.0 / Software Evolution Scaffold v1.0
+%   Target Evolution: Batmobile 2.0 (Repo-Coherent Upgrade Layer)
+%
+%   AUTHOR
+%   ──────
+%   James Paul Jackson
+%
+%   DATE
+%   ────
+%   January 2026
+%
+%   INSPIRATION
+%   ───────────
+%   • Infatoshi, "batmobile" — SO(3) CUDA kernel specialization for equivariant ML
+%   • "The Symmetry-Compiled Execution Principle (SO(3)-Scoped)" — v1.7 hypothesis note
+%     (Codex–Tesseract extracted execution invariant)
+%
+%   PRIMARY SOURCE
+%   ──────────────
+%   • Batmobile upstream repository by Infatoshi
+%   • Batmobile.evo fork (full directory + source extraction)
+%
+%   DATA PROVENANCE
+%   ───────────────
+%   • Repository unpacked + structure confirmed from Batmobile.evo zip:
+%       benchmarks/, include/, python/, scripts/, src/, tests/
+%   • Kernel domains verified:
+%       spherical_harmonics/, tensor_product/, neighbor_list/, message_passing/
+%   • No performance claims made here — only evolution + validation definition
+%
+%   EVOLUTION MODE
+%   ──────────────
+%   EVOLUTION LAYER (Theory → Repo Truth → Architecture Upgrade → Validation Harness)
+%
+%   PURPOSE
+%   ───────
+%   Convert the v1.7 SO(3) hypothesis principle into a concrete Batmobile 2.0 plan:
+%   (1) evolve existing kernel families without rewriting repo structure,
+%   (2) extend scaling to higher ℓ through selective compilation,
+%   (3) formalize benchmarking + profiling as first-class artifacts,
+%   (4) deliver PR-ready evolution scaffolds aligned with upstream design.
+%
+%   WHAT THIS IS
+%   ────────────
+%   • A Batmobile 2.0 architecture upgrade grounded in the actual repository layout
+%   • A2.0 evolution layer: kernel scaling, dispatch refinement, validation contract
+%   • A reproducible measurement + profiling scaffold for community falsification
+%
+%   WHAT THIS IS NOT
+%   ───────────────
+%   • Not a benchmark result or performance claim
+%   • Not a rewrite of Infatoshi’s implementation philosophy
+%   • Not a guarantee that ℓ≥8/10 scales without register/cache limits
+%
+%   STATUS
+%   ──────
+%   ARCHITECTURE LOCK (A2.0) — IMPLEMENTATION + BENCHMARKING PENDING.
+%   Batmobile 2.0 gains remain predictions until validation artifacts are produced.
+%
+% ████████████████████████████████████████████████████████████████████████████████
+% ────────────────────────────────────────────────────────────────────────────────
+
+
+\documentclass[11pt]{article}
+
+\usepackage{amsmath,amssymb}
+\usepackage{geometry}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{enumitem}
+
+\geometry{margin=1in}
+
+\title{\textbf{Batmobile.Next (2.0) — Architecture Evolution Bridge}\\
+\large \textbf{A2.0.V1.0: Repo-Coherent Upgrade Scaffold}}
+\author{\textbf{James Paul Jackson}}
+\date{January 2026}
+
+\begin{document}
+\maketitle
+
+
+%──────────────────────────────────────────────────────────────────────────────
+\section{Executive Summary}
+
+Batmobile is already a full-stack SO(3)-equivariant CUDA execution system,
+not merely a tensor-product microkernel library.
+
+The extracted repository truth (Batmobile.evo) confirms first-class kernel
+domains:
+
+\begin{itemize}[leftmargin=1.2em]
+\item \texttt{src/spherical\_harmonics/}
+\item \texttt{src/tensor\_product/}
+\item \texttt{src/neighbor\_list/}
+\item \texttt{src/message\_passing/}
+\end{itemize}
+
+This implies Batmobile.Next must evolve around end-to-end equivariant GNN workloads:
+neighbor graphs → tensor coupling → message passing throughput.
+
+This document defines Batmobile 2.0 as an \emph{architecture upgrade layer}
+that preserves upstream structure while enabling:
+
+\begin{itemize}[leftmargin=1.2em]
+\item selective high-$\ell$ compilation,
+\item mixed-precision pathways,
+\item reproducible benchmarking artifacts,
+\item Nsight-based scaling diagnosis.
+\end{itemize}
+
+
+%──────────────────────────────────────────────────────────────────────────────
+\section{Design Goals (A2.0)}
+
+\begin{enumerate}[leftmargin=1.2em]
+\item \textbf{Repo coherence:} evolve within existing module boundaries.
+\item \textbf{Kernel scaling:} extend beyond $L_{\max}=4$ without explosion.
+\item \textbf{Graph realism:} neighbor list + message passing remain central.
+\item \textbf{Validation-first:} benchmarks become required artifacts, not optional.
+\item \textbf{Profiling truth:} scaling ceilings explained by occupancy/cache limits.
+\item \textbf{Upstream-ready PR path:} each stage valuable independently.
+\end{enumerate}
+
+
+%──────────────────────────────────────────────────────────────────────────────
+\section{System Constraint: SO(3) Coupling Structure}
+
+Tensor products obey:
+
+\[
+R_{\ell_1}\otimes R_{\ell_2}
+\to
+\bigoplus_{\ell=|\ell_1-\ell_2|}^{\ell_1+\ell_2} R_\ell
+\]
+
+The CG sparsity schedule is static per channel $(\ell_1,\ell_2,\ell_3)$.
+
+Thus:
+
+\begin{quote}
+\textbf{Evolution invariant:}
+CG execution paths are compile-time artifacts, not runtime abstractions.
+\end{quote}
+
+
+%──────────────────────────────────────────────────────────────────────────────
+\section{Repository Baseline (Batmobile.evo Truth)}
+
+Confirmed layout:
+
+\begin{verbatim}
+batmobile-evo/
+  benchmarks/
+  include/
+  python/
+    batmobile/
+    cg_coefficients/
+  scripts/
+  src/
+    spherical_harmonics/
+    tensor_product/
+    neighbor_list/
+    message_passing/
+  tests/
+\end{verbatim}
+
+Batmobile 2.0 must evolve by upgrading \emph{within these surfaces},
+not by replacing them.
+
+
+%──────────────────────────────────────────────────────────────────────────────
+\section{Evolution Layer: Batmobile 2.0 Upgrade Modules}
+
+\subsection{Evolution 1: Selective High-$\ell$ Tensor Product Scaling}
+
+Located in:
+
+\texttt{src/tensor\_product/}
+
+\textbf{Upgrade:}
+
+\begin{itemize}[leftmargin=1.2em]
+\item introduce tiered compilation:
+  \begin{itemize}
+    \item low-$\ell$ fully unrolled kernels,
+    \item high-$\ell$ selective schedules,
+    \item generic fallback for rare couplings.
+  \end{itemize}
+\item bound binary growth while extending usable $\ell$.
+\end{itemize}
+
+\textbf{Predicted gain:}
+practical $\ell \ge 8$ scaling without runaway compilation.
+
+
+\subsection{Evolution 2: Neighbor-List-Aware Performance Boundary}
+
+Located in:
+
+\texttt{src/neighbor\_list/}
+
+Neighbor construction defines the true workload regime.
+
+Batmobile.Next must benchmark speedups as:
+
+\[
+(\ell, N_{\text{atoms}}, d_{\text{neighbors}})
+\]
+
+not $\ell$ alone.
+
+
+\subsection{Evolution 3: Message Passing as the End-to-End Target}
+
+Located in:
+
+\texttt{src/message\_passing/}
+
+Batmobile 2.0 validation must report:
+
+\begin{itemize}[leftmargin=1.2em]
+\item message passing throughput,
+\item coupling overhead fraction,
+\item scaling across graph sizes.
+\end{itemize}
+
+
+\subsection{Evolution 4: CG Coefficient Artifact Freezing}
+
+Located in:
+
+\texttt{python/cg\_coefficients/}
+
+Upgrade:
+
+\begin{itemize}[leftmargin=1.2em]
+\item pack schedules for constant/read-only cache,
+\item version coefficient artifacts per $\ell_{\max}$,
+\item emit reproducible coupling tables.
+\end{itemize}
+
+
+%──────────────────────────────────────────────────────────────────────────────
+\section{Validation Harness Upgrade (Benchmarks + Scripts)}
+
+Batmobile already contains:
+
+\texttt{benchmarks/} and \texttt{scripts/}
+
+Batmobile.Next must evolve these into artifact contracts:
+
+\begin{itemize}[leftmargin=1.2em]
+\item \texttt{results.json} (GPU, CUDA, precision, workload)
+\item filled throughput tables
+\item commit-hash reproducibility
+\item Nsight Compute metric capture scripts
+\end{itemize}
+
+
+%──────────────────────────────────────────────────────────────────────────────
+\section{PR Strategy (Upstream-Compatible Evolution)}
+
+\begin{enumerate}[leftmargin=1.2em]
+\item Add \texttt{docs/hypothesis/} (v1.7 principle note)
+\item Add \texttt{benchmarks/results.json} artifact contract
+\item Add \texttt{scripts/profile.sh} + Nsight checklist
+\item Add selective high-$\ell$ kernels behind flags
+\item Validate end-to-end message passing speedups
+\end{enumerate}
+
+
+%──────────────────────────────────────────────────────────────────────────────
+\section{Conclusion}
+
+Batmobile.Next (2.0) is defined here as an architecture evolution layer grounded
+in repository truth:
+
+\begin{itemize}[leftmargin=1.2em]
+\item tensor products scale selectively,
+\item neighbor lists define activation boundaries,
+\item message passing is the real target,
+\item benchmarks + profiling become first-class artifacts.
+\end{itemize}
+
+All gains remain hypotheses until validated by the harness described herein.
+
+\section*{Acknowledgments}
+
+We thank Infatoshi for the original batmobile implementation.
+This document proposes a coherent evolution scaffold; empirical validation is pending.
+
+\end{document}

@@ -1,0 +1,9 @@
+﻿{
+    "imported_at":  "2026-01-26 01:46:43",
+    "version":  "A2.0.V1.3",
+    "overlay_zip":  "C:\\Users\\jacks\\OneDrive\\Desktop\\BATMOBILE.EVO\\Batmobile.evo.zip",
+    "index_path":  "manifest\\overlay_index.json",
+    "contract":  "batmobile.evo.overlay_receipt",
+    "raw_root":  "manifest\\overlay_raw\\A2.0.V1.3",
+    "notes":  "Overlay captured raw + categorized landing + index. No claims."
+}

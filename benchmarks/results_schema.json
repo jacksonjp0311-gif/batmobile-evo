@@ -1,5 +1,21 @@
 ﻿{
   "contract": "batmobile.next.benchmarks",
-  "version": "A2.0.V1.1",
-  "notes": "Artifact-only schema. No claims."
+  "version": "A2.0.V1.3",
+  "notes": "Artifact contract only. No claims. Populate via harness.",
+  "required_top_level": [
+    "contract","version","timestamp_utc","git","environment","runs","summary"
+  ],
+  "environment_fields": [
+    "os","machine","python","cuda_visible_devices","gpu_query","packages"
+  ],
+  "run_fields": [
+    "name","path","kind","status","exit_code","elapsed_sec","stdout_path","stderr_path"
+  ],
+  "status_enum": [
+    "OK",
+    "FAILED_BUILD",
+    "FAILED_CONTRACT",
+    "FAILED_REPRO",
+    "FAILED_RUNTIME"
+  ]
 }

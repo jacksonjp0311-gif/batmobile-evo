@@ -1,0 +1,26 @@
+﻿[
+    {
+        "name":  "Batmobile.EVO Architecture",
+        "rel_in_zip":  "8da6f4fb8cbc361fcc28e45fe77c3912-b8d305612a49be88b196d89519d0cc46d90e96ac\\Batmobile.EVO Architecture",
+        "raw_dest":  "manifest\\overlay_raw\\A2.0.V1.3\\8da6f4fb8cbc361fcc28e45fe77c3912-b8d305612a49be88b196d89519d0cc46d90e96ac\\Batmobile.EVO Architecture",
+        "bucket":  "manifest\\architecture",
+        "bucket_dest":  "manifest\\architecture\\Batmobile.EVO Architecture",
+        "bytes":  11368
+    },
+    {
+        "name":  "Batmobile.EVO Directory Architecture",
+        "rel_in_zip":  "8da6f4fb8cbc361fcc28e45fe77c3912-b8d305612a49be88b196d89519d0cc46d90e96ac\\Batmobile.EVO Directory Architecture",
+        "raw_dest":  "manifest\\overlay_raw\\A2.0.V1.3\\8da6f4fb8cbc361fcc28e45fe77c3912-b8d305612a49be88b196d89519d0cc46d90e96ac\\Batmobile.EVO Directory Architecture",
+        "bucket":  "manifest\\directory_lock",
+        "bucket_dest":  "manifest\\directory_lock\\Batmobile.EVO Directory Architecture",
+        "bytes":  10912
+    },
+    {
+        "name":  "Symmetry-Compiled Execution Principle (SO(3)) — batmobile Kernel Hypothesis v1.7",
+        "rel_in_zip":  "8da6f4fb8cbc361fcc28e45fe77c3912-b8d305612a49be88b196d89519d0cc46d90e96ac\\Symmetry-Compiled Execution Principle (SO(3)) — batmobile Kernel Hypothesis v1.7",
+        "raw_dest":  "manifest\\overlay_raw\\A2.0.V1.3\\8da6f4fb8cbc361fcc28e45fe77c3912-b8d305612a49be88b196d89519d0cc46d90e96ac\\Symmetry-Compiled Execution Principle (SO(3)) — batmobile Kernel Hypothesis v1.7",
+        "bucket":  "docs\\hypothesis",
+        "bucket_dest":  "docs\\hypothesis\\Symmetry-Compiled Execution Principle (SO(3)) — batmobile Kernel Hypothesis v1.7",
+        "bytes":  13942
+    }
+]
