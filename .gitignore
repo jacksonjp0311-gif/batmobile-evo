@@ -74,3 +74,15 @@ artifacts/
 build/
 *.token
 *.log
+
+# BATMOBILE ORACLE ARTIFACTS (NON-COMMIT)
+logs/
+build/
+tokens/*.token
+*.exe
+*.obj
+*.pdb
+*.lib
+*.exp
+*.tmp
+*.log
