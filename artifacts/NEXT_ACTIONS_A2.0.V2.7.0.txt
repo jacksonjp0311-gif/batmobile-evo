@@ -1,0 +1,9 @@
+﻿STOP: Repo is dirty.
+ACTION: Run → git add -A ; git commit -m "WIP clean"
+Dirty files listed in oracle.
+STOP: nvcc.exe missing.
+ACTION:
+1) Install NVIDIA CUDA Toolkit (Developer)
+2) Ensure CUDA Compiler (nvcc) checked
+3) Reboot
+4) Rerun Oracle

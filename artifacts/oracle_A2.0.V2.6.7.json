@@ -1,0 +1,36 @@
+﻿{
+    "torch_cuda":  "True",
+    "SMART_FEEDBACK":  [
+                           "STOP: Torch CUDA runtime TRUE but nvcc.exe missing.",
+                           "NEXT ACTION:",
+                           "1) Install NVIDIA CUDA Toolkit (Developer installer)",
+                           "2) Ensure CUDA Compiler (nvcc) is checked",
+                           "3) Reboot Windows",
+                           "4) Rerun Oracle A2.0.V2.6.7",
+                           "GIT BLOCKED: Working tree dirty. Commit/stash before rebase."
+                       ],
+    "nvcc":  {
+                 "disk_candidates":  [
+
+                                     ],
+                 "primary":  null,
+                 "version_proof":  "C:\\Users\\jacks\\OneDrive\\Desktop\\BATMOBILE.EVO\\batmobile-evo\\artifacts\\nvcc_version_A2.0.V2.6.7.txt"
+             },
+    "truth_protocol":  "CANON_LOCKED_v2.6.7",
+    "time":  "2026-01-27T10:23:19.8448106-05:00",
+    "git":  {
+                "state":  "BLOCKED_DIRTY_TREE"
+            },
+    "canon":  {
+                  "protocol_doc":  "C:\\Users\\jacks\\OneDrive\\Desktop\\BATMOBILE.EVO\\batmobile-evo\\docs\\canon\\TRUTH_PROTOCOL_CANON.md",
+                  "pass_token":  "C:\\Users\\jacks\\OneDrive\\Desktop\\BATMOBILE.EVO\\batmobile-evo\\artifacts\\PASS_A2.0.V2.6.7.token"
+              },
+    "tag":  "A2.0.V2.6.7",
+    "status":  "FAIL_CUDA_TOOLKIT_MISSING",
+    "next_gate":  "Only if PASS + token → A2.0.V2.7.0 Extension Proof Node",
+    "rootmirror":  {
+                       "remote_hash":  "cb8facf4eb01865c65a24b5dbcecae04bd389ea2",
+                       "local_hash":  "cb8facf4eb01865c65a24b5dbcecae04bd389ea2",
+                       "state":  "VERIFIED"
+                   }
+}
