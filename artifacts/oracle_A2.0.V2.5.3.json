@@ -1,0 +1,18 @@
+﻿{
+    "guidance":  [
+                     "MSVC v143 toolset not installed",
+                     "VS Installer → Modify → Desktop Development with C++",
+                     "Windows SDK missing — check SDK component"
+                 ],
+    "cl_candidates":  {
+
+                      },
+    "compile_err":  "C:\\Users\\jacks\\OneDrive\\Desktop\\BATMOBILE.EVO\\batmobile-evo\\artifacts\\compile_err_A2.0.V2.5.3.txt",
+    "next_gate":  "If MSVC PASS → CUDA nvcc proof (A2.0.V2.6.0)",
+    "compile_out":  "C:\\Users\\jacks\\OneDrive\\Desktop\\BATMOBILE.EVO\\batmobile-evo\\artifacts\\compile_out_A2.0.V2.5.3.txt",
+    "time":  "2026-01-27T09:44:58.0970128-05:00",
+    "tag":  "A2.0.V2.5.3",
+    "status":  "WINDOWS_SDK_MISSING",
+    "windows_sdk_present":  false,
+    "compile_proof":  "NOT_RUN"
+}
