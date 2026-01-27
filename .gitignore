@@ -69,3 +69,8 @@ logs/_tmp_out_*
 logs/_tmp_err_*
 installers/*.exe
 installers/*.msi
+# BATMOBILE proof artifacts
+artifacts/
+build/
+*.token
+*.log
