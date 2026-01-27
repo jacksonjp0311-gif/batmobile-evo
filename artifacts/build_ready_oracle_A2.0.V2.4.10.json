@@ -8,10 +8,10 @@
     "vcvars64_present":  false,
     "time":  "2026-01-27T09:18:47.0506122-05:00",
     "git_push":  {
-                     "err_file":  null,
-                     "status":  "PENDING",
-                     "out_file":  null,
-                     "exit_code":  null
+                     "err_file":  "C:\\Users\\jacks\\OneDrive\\Desktop\\BATMOBILE.EVO\\batmobile-evo\\artifacts\\git_push_err_A2.0.V2.4.10.txt",
+                     "status":  "OK",
+                     "out_file":  "C:\\Users\\jacks\\OneDrive\\Desktop\\BATMOBILE.EVO\\batmobile-evo\\artifacts\\git_push_out_A2.0.V2.4.10.txt",
+                     "exit_code":  0
                  },
     "tag":  "A2.0.V2.4.10",
     "compile_log":  null,
