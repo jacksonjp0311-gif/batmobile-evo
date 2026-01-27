@@ -1,2 +1,0 @@
-To https://github.com/jacksonjp0311-gif/batmobile-evo.git
-   1bd72b3..5595353  main -> main
