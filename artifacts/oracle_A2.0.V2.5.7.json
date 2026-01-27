@@ -1,0 +1,20 @@
+﻿{
+    "tag":  "A2.0.V2.5.7",
+    "windows_sdk":  {
+                        "kits11_root":  "C:\\Program Files (x86)\\Windows Kits\\11",
+                        "any_sdk_present":  false,
+                        "kits10_root":  "C:\\Program Files (x86)\\Windows Kits\\10"
+                    },
+    "next_gate":  "If PASS → CUDA nvcc proof node (A2.0.V2.6.0)",
+    "msvc":  {
+                 "cl_candidates":  [
+
+                                   ]
+             },
+    "guidance":  [
+                     "Install Desktop Development with C++",
+                     "Component: MSVC v143 Build Tools"
+                 ],
+    "time":  "2026-01-27T09:56:11.1877735-05:00",
+    "status":  "MSVC_V143_MISSING"
+}

@@ -1,0 +1,29 @@
+﻿{
+    "next_gate":  "If NVCC OK → A2.0.V2.7.0 Extension Build Proof Node",
+    "cuda_env":  {
+                     "CUDA_PATH":  null
+                 },
+    "time":  "2026-01-27T10:04:34.5202262-05:00",
+    "nvcc":  {
+                 "primary":  null,
+                 "disk_candidates":  [
+
+                                     ]
+             },
+    "status":  "CUDA_TOOLKIT_MISSING",
+    "guidance":  [
+                     "Torch CUDA runtime: TRUE (GPU driver working)",
+                     "nvcc.exe NOT FOUND → CUDA Toolkit NOT installed",
+                     "",
+                     "NEXT ACTION REQUIRED:",
+                     "1) Download CUDA Toolkit (not just driver)",
+                     "2) Install with \u0027CUDA Compiler (nvcc)\u0027 checked",
+                     "3) Reboot Windows",
+                     "4) Rerun Oracle A2.0.V2.6.2",
+                     "",
+                     "Expected nvcc path:",
+                     "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.x\\bin\\nvcc.exe"
+                 ],
+    "torch_cuda":  "True",
+    "tag":  "A2.0.V2.6.2"
+}

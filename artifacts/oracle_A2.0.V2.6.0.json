@@ -1,0 +1,16 @@
+﻿{
+    "next_gate":  "If PASS → A2.0.V2.7.0 Extension Build Proof Node",
+    "time":  "2026-01-27T10:02:46.9684003-05:00",
+    "cuda_home":  null,
+    "torch":  {
+                  "cuda_available":  "True"
+              },
+    "nvcc":  {
+                 "path":  null
+             },
+    "status":  "NVCC_MISSING",
+    "guidance":  [
+                     "Install NVIDIA CUDA Toolkit (nvcc.exe not found)"
+                 ],
+    "tag":  "A2.0.V2.6.0"
+}

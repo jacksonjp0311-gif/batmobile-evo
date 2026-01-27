@@ -1,0 +1,62 @@
+﻿{
+    "vs":  {
+               "vswhere":  "C:\\Program Files (x86)\\Microsoft Visual Studio\\Installer\\vswhere.exe",
+               "installer_root":  "C:\\Program Files (x86)\\Microsoft Visual Studio\\Installer",
+               "vc_component_detected_by_vswhere":  null,
+               "sdk_component_detected_by_vswhere":  null,
+               "vs_installer":  "C:\\Program Files (x86)\\Microsoft Visual Studio\\Installer\\vs_installer.exe"
+           },
+    "guidance":  [
+                     "MSVC v143 toolset not installed (cl.exe not found on disk)",
+                     "VS Installer → Modify → Desktop Development with C++",
+                     "Individual components: MSVC v143 Build Tools"
+                 ],
+    "windows_sdk":  {
+                        "kits11_root":  "C:\\Program Files (x86)\\Windows Kits\\11",
+                        "kits11_present":  false,
+                        "kits10_root":  "C:\\Program Files (x86)\\Windows Kits\\10",
+                        "kits11_versions":  [
+
+                                            ],
+                        "any_sdk_present":  false,
+                        "kits10_present":  false,
+                        "kits10_versions":  [
+
+                                            ]
+                    },
+    "msvc":  {
+                 "cl_primary":  null,
+                 "cl_candidates":  [
+
+                                   ]
+             },
+    "flags":  {
+                  "sdk_component_hint":  false,
+                  "vswhere_present":  true,
+                  "cl_found":  false,
+                  "vc_component_hint":  false,
+                  "sdk_found":  false,
+                  "vs_installer_present":  true
+              },
+    "time":  "2026-01-27T09:48:57.9411905-05:00",
+    "git_push":  {
+                     "status":  "PENDING"
+                 },
+    "repair_contract":  [
+                            "Workload: Desktop Development with C++",
+                            "Component: MSVC v143 Build Tools (x86/x64)",
+                            "Component: Windows 10/11 SDK",
+                            "Component: C++ CMake tools for Windows"
+                        ],
+    "tag":  "A2.0.V2.5.4",
+    "status":  "MSVC_V143_MISSING",
+    "next_gate":  "If MSVC+SDK PASS → CUDA nvcc proof (A2.0.V2.6.0)",
+    "compile_proof":  {
+                          "exit_code":  null,
+                          "err_file":  "C:\\Users\\jacks\\OneDrive\\Desktop\\BATMOBILE.EVO\\batmobile-evo\\artifacts\\compile_err_A2.0.V2.5.4.txt",
+                          "err_tail":  "",
+                          "out_file":  "C:\\Users\\jacks\\OneDrive\\Desktop\\BATMOBILE.EVO\\batmobile-evo\\artifacts\\compile_out_A2.0.V2.5.4.txt",
+                          "attempted":  false,
+                          "status":  "NOT_RUN"
+                      }
+}
