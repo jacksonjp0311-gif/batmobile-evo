@@ -1,0 +1,30 @@
+﻿{
+    "cuda_env":  {
+                     "CUDA_PATH":  null
+                 },
+    "torch_cuda":  "True",
+    "SMART_FEEDBACK":  [
+                           "STOP: Torch CUDA runtime TRUE but nvcc.exe missing.",
+                           "ACTION: Install NVIDIA CUDA Toolkit (Developer) with nvcc checked.",
+                           "Reboot → rerun Oracle."
+                       ],
+    "nvcc":  {
+                 "primary":  null,
+                 "disk_candidates":  [
+
+                                     ]
+             },
+    "truth_protocol":  "CANON_LOCKED",
+    "time":  "2026-01-27T10:11:34.8292203-05:00",
+    "git":  {
+                "state":  "SYNCED"
+            },
+    "tag":  "A2.0.V2.6.5",
+    "status":  "FAIL_CUDA_TOOLKIT_MISSING",
+    "next_gate":  "Only if PASS → A2.0.V2.7.0 Extension Build Proof Node",
+    "rootmirror":  {
+                       "remote_hash":  "7a986e148c3963ba2524712535e72d3d1eaa5d7a",
+                       "local_hash":  "7a986e148c3963ba2524712535e72d3d1eaa5d7a",
+                       "state":  "VERIFIED"
+                   }
+}
