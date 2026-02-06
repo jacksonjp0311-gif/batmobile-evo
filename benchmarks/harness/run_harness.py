@@ -5,8 +5,13 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]  # repo root
 RESULTS_DIR = ROOT / "benchmarks" / "results"
 PROFILES_DIR = ROOT / "benchmarks" / "profiles"
+LOGS_DIR = ROOT / "logs"
+ARTIFACTS_DIR = ROOT / "artifacts"
+REGISTRY_PATH = ROOT / "benchmarks" / "bench_registry.json"
 RESULTS_DIR.mkdir(parents=True, exist_ok=True)
 PROFILES_DIR.mkdir(parents=True, exist_ok=True)
+LOGS_DIR.mkdir(parents=True, exist_ok=True)
+ARTIFACTS_DIR.mkdir(parents=True, exist_ok=True)
 
 def utc_now():
     return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
@@ -49,20 +54,39 @@ def env_fingerprint():
         "packages": pkgs.splitlines() if pkgs else []
     }
 
+def load_bench_registry():
+    if not REGISTRY_PATH.exists():
+        return []
+    try:
+        payload = json.loads(REGISTRY_PATH.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return []
+    if not isinstance(payload, list):
+        return []
+    benches = []
+    for entry in payload:
+        if not isinstance(entry, dict):
+            continue
+        name = entry.get("name")
+        path = entry.get("path")
+        kind = entry.get("kind", "unknown")
+        if name and path:
+            benches.append((name, path, kind))
+    return benches
+
 def main():
     ts = utc_now()
     stamp = ts.replace(":","").replace("-","")
     out_json = RESULTS_DIR / f"results_{stamp}.json"
 
-    # Known bench scripts (repo-truth: do not guess beyond these)
-    benches = [
-        ("microbench_spherical_harmonics", "benchmarks/microbench/bench_spherical_harmonics.py", "microbench"),
-        ("microbench_tensor_product",      "benchmarks/microbench/bench_tensor_product.py",      "microbench"),
-        ("microbench_neighbor_list",       "benchmarks/microbench/bench_neighbor_list.py",       "microbench"),
-        ("end2end_message_passing",        "benchmarks/end2end/bench_message_passing.py",        "end2end"),
-    ]
+    benches = load_bench_registry()
+    if not benches:
+        print("[BATMOBILE] No benchmark registry found or it is empty.")
+        print(f"[BATMOBILE] Expected: {REGISTRY_PATH}")
+        return 1
 
     runs = []
+    log_lines = []
     for name, rel, kind in benches:
         path = ROOT / rel
         run = {
@@ -81,6 +105,7 @@ def main():
             stderr_p = RESULTS_DIR / f"{name}_{stamp}.stderr.txt"
             stderr_p.write_text(f"missing file: {rel}\n", encoding="utf-8")
             run["stderr_path"] = str(stderr_p.relative_to(ROOT))
+            log_lines.append(f"[{name}] MISSING: {rel}")
             runs.append(run)
             continue
 
@@ -101,6 +126,13 @@ def main():
             run["status"] = "OK"
         else:
             run["status"] = "FAILED_RUNTIME"
+
+        log_lines.append(f"[{name}] cmd: {' '.join(cmd)}")
+        log_lines.append(f"[{name}] exit_code: {rc} elapsed_sec: {dt:.4f}")
+        if out:
+            log_lines.append(f"[{name}] stdout:\n{out}")
+        if err:
+            log_lines.append(f"[{name}] stderr:\n{err}")
 
         runs.append(run)
 
@@ -127,8 +159,14 @@ def main():
 
     out_json.write_text(json.dumps(payload, indent=2), encoding="utf-8")
     print(f"[BATMOBILE] wrote → {out_json}")
+    log_path = LOGS_DIR / f"run_{stamp}.log"
+    log_path.write_text("\n".join(log_lines) + "\n", encoding="utf-8")
+    latest_path = ARTIFACTS_DIR / f"latest_{stamp}.txt"
+    latest_path.write_text(str(out_json.relative_to(ROOT)) + "\n", encoding="utf-8")
+    print(f"[BATMOBILE] log → {log_path}")
+    print(f"[BATMOBILE] latest → {latest_path}")
 
 if __name__ == "__main__":
     # allow PS to inject version tag
     os.environ.setdefault("BATMOBILE_TAG", "")
-    main()
+    raise SystemExit(main())
