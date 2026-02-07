@@ -8,6 +8,7 @@ PROFILES_DIR = ROOT / "benchmarks" / "profiles"
 LOGS_DIR = ROOT / "logs"
 ARTIFACTS_DIR = ROOT / "artifacts"
 REGISTRY_PATH = ROOT / "benchmarks" / "bench_registry.json"
+SCHEMA_PATH = ROOT / "benchmarks" / "results_schema.json"
 RESULTS_DIR.mkdir(parents=True, exist_ok=True)
 PROFILES_DIR.mkdir(parents=True, exist_ok=True)
 LOGS_DIR.mkdir(parents=True, exist_ok=True)
@@ -74,6 +75,39 @@ def load_bench_registry():
             benches.append((name, path, kind))
     return benches
 
+def load_schema():
+    if not SCHEMA_PATH.exists():
+        return {}
+    try:
+        return json.loads(SCHEMA_PATH.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return {}
+
+def validate_payload(payload, schema):
+    errors = []
+    required_top = schema.get("required_top_level", [])
+    if required_top:
+        missing = [key for key in required_top if key not in payload]
+        if missing:
+            errors.append(f"missing top-level fields: {missing}")
+
+    env_fields = schema.get("environment_fields", [])
+    environment = payload.get("environment", {})
+    missing_env = [key for key in env_fields if key not in environment]
+    if missing_env:
+        errors.append(f"missing environment fields: {missing_env}")
+
+    run_fields = schema.get("run_fields", [])
+    status_enum = set(schema.get("status_enum", []))
+    for idx, run in enumerate(payload.get("runs", [])):
+        missing_run = [key for key in run_fields if key not in run]
+        if missing_run:
+            errors.append(f"run[{idx}] missing fields: {missing_run}")
+        if status_enum and run.get("status") not in status_enum:
+            errors.append(f"run[{idx}] invalid status: {run.get('status')}")
+
+    return errors
+
 def main():
     ts = utc_now()
     stamp = ts.replace(":","").replace("-","")
@@ -87,6 +121,7 @@ def main():
 
     runs = []
     log_lines = []
+    log_lines.append(f"[BATMOBILE] registry: {REGISTRY_PATH}")
     for name, rel, kind in benches:
         path = ROOT / rel
         run = {
@@ -157,6 +192,15 @@ def main():
         "notes": "Artifact truth only. No performance claims implied by existence of results."
     }
 
+    schema = load_schema()
+    contract_errors = validate_payload(payload, schema) if schema else []
+    if contract_errors:
+        log_lines.append("[BATMOBILE] contract validation FAILED")
+        for err in contract_errors:
+            log_lines.append(f"[BATMOBILE] contract error: {err}")
+    else:
+        log_lines.append("[BATMOBILE] contract validation OK")
+
     out_json.write_text(json.dumps(payload, indent=2), encoding="utf-8")
     print(f"[BATMOBILE] wrote → {out_json}")
     log_path = LOGS_DIR / f"run_{stamp}.log"
@@ -165,6 +209,12 @@ def main():
     latest_path.write_text(str(out_json.relative_to(ROOT)) + "\n", encoding="utf-8")
     print(f"[BATMOBILE] log → {log_path}")
     print(f"[BATMOBILE] latest → {latest_path}")
+
+    if contract_errors:
+        return 2
+    if fail > 0:
+        return 1
+    return 0
 
 if __name__ == "__main__":
     # allow PS to inject version tag
