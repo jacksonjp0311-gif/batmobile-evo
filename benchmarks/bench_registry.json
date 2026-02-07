@@ -1,0 +1,47 @@
+[
+  {
+    "name": "spherical_harmonics",
+    "path": "benchmarks/bench_spherical_harmonics.py",
+    "kind": "microbench"
+  },
+  {
+    "name": "tensor_product",
+    "path": "benchmarks/benchmark_tensor_product.py",
+    "kind": "microbench"
+  },
+  {
+    "name": "tensor_product_backward",
+    "path": "benchmarks/benchmark_tp_backward.py",
+    "kind": "microbench"
+  },
+  {
+    "name": "fused_sh_tp",
+    "path": "benchmarks/benchmark_fused_sh_tp.py",
+    "kind": "microbench"
+  },
+  {
+    "name": "fused_message_passing",
+    "path": "benchmarks/benchmark_fused_mp.py",
+    "kind": "end2end"
+  },
+  {
+    "name": "neighbor_list",
+    "path": "benchmarks/benchmark_neighbor_list.py",
+    "kind": "microbench"
+  },
+  {
+    "name": "neighbor_list_pbc_check",
+    "path": "benchmarks/benchmark_neighbor_list_pbc_check.py",
+    "kind": "microbench"
+  },
+  {
+    "name": "neighbor_list_standalone",
+    "path": "benchmarks/benchmark_neighbor_list_standalone.py",
+    "kind": "microbench"
+  },
+  {
+    "name": "end_to_end_mace",
+    "path": "benchmarks/benchmark_e2e_mace.py",
+    "kind": "end2end"
+  }
+]
