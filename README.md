@@ -2,6 +2,10 @@
 
 High-performance CUDA kernels for equivariant graph neural networks. Batmobile provides optimized implementations of spherical harmonics, tensor products with Clebsch-Gordan coefficients, and fused message passing operations—the computational bottlenecks in models like MACE, NequIP, and Allegro. Built for L_max=3, targeting molecular dynamics and materials science workloads.
 
+## Summary
+
+Batmobile.EVO focuses on a clean, reproducible benchmark pipeline for high-performance equivariant kernels. The repository includes CUDA kernels, PyTorch autograd wrappers, benchmark harness tooling, and documentation governing evolution rules and reproducibility requirements.
+
 ## Highlights
 
 - CUDA-first kernels for spherical harmonics, tensor products, and fused message passing.
@@ -110,6 +114,30 @@ loss.backward()  # Computes grad w.r.t. edge_vectors
 - The harness now emits consolidated logs and latest-artifact pointers alongside results JSON for reproducible reporting.
 - Contract validation feedback is captured in harness logs to surface schema issues early.
 
+## Glossary
+
+- **Artifact**: A JSON or log output produced by the benchmark harness and stored under `benchmarks/results/`, `logs/`, and `artifacts/`.
+- **Benchmark harness**: The orchestrator script (`benchmarks/harness/run_harness.py`) that runs all benchmark scripts defined in `benchmarks/bench_registry.json`.
+- **Contract**: The required schema for benchmark outputs defined in `benchmarks/results_schema.json`.
+- **PASS token**: A canon rule indicating benchmark success and reproducibility requirements are met before evolution can proceed.
+- **Registry**: The canonical list of benchmark scripts to run, stored in `benchmarks/bench_registry.json`.
+
+## Directory map
+
+```
+benchmarks/      # Benchmark scripts + harness + results schema
+docs/            # Canon + architecture + evolution documentation
+docs/assets/     # Benchmark images and visual assets
+examples/        # Usage examples and prototypes
+include/         # CUDA/C++ headers
+manifest/        # Architecture and theory manifests
+python/          # Python package wrapper
+scripts/         # Helper scripts (build/bench/ops)
+scripts/oracle/  # Archived Oracle PowerShell scripts
+src/             # CUDA/C++ source implementations
+tests/           # Test suite
+```
+
 ## API Reference
 
 ### Spherical Harmonics
@@ -157,6 +185,19 @@ If you use Batmobile in your research, please cite:
 ```bibtex
 @software{batmobile2025,
   title={Batmobile: High-Performance CUDA Kernels for Equivariant GNNs},
+  author={Elliot Arledge},
+  year={2025},
+  url={https://github.com/Infatoshi/batmobile}
+}
+```
+
+## Batmobile.EVO Citation
+
+If you use Batmobile.EVO artifacts or benchmarks, please cite:
+
+```bibtex
+@software{batmobile_evo2025,
+  title={Batmobile.EVO: Benchmark-Driven Evolution for Equivariant Kernels},
   author={Elliot Arledge},
   year={2025},
   url={https://github.com/Infatoshi/batmobile}
